@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <conio.h>
 #include <math.h>
 #include "BinaryTree.h"
 // #include "LinkedList.h"
@@ -75,7 +76,8 @@ void insertTreeNode(treeNode *root, int value)
 
 void insertArrayIntoTree(treeNode *root, int array[], int length)
 {
-    for (int i = 0; i < length; i++)
+    
+	for (int i = 0; i < length; i++)
     {
         insertTreeNode(root, array[i]);
     }
@@ -492,50 +494,37 @@ void captura()
 	printf("Para parar ingrese el numero 0\n");
 	for (int i=0; i<=99; i++)
 	{
-		
 		printf("Ingresa el nodo numero %d: ",i);
 		scanf("%f",&a[i]);
+		
 		if(a[i]==0) //Encontrar manera para que no guarde el 0
-		{
-			//a[i]=NULL;
+		{//el 0 en el arreglo significa null en lenguaje c 
+		
 			n=i;
 			break;
 		}
+
 		
 	}
+	
 }
 
 //Desplegar el �rbol
 void muestra()
 {
-	//manera que encontr� de como desplegarlo (arreglar si es que se puede)
 	treeNode *root = CreateTreeNode(NULL, a[0]);
-	insertTreeNode(root, a[1]);
-	insertTreeNode(root, a[2]);
-	insertTreeNode(root, a[3]);
-	insertTreeNode(root, a[4]);
-	insertTreeNode(root, a[5]);
-	insertTreeNode(root, a[6]);
-	insertTreeNode(root, a[7]);
-	insertTreeNode(root, a[8]);
-	insertTreeNode(root, a[9]);
-	insertTreeNode(root, a[10]);
-	insertTreeNode(root, a[11]);
-	insertTreeNode(root, a[12]);
-	insertTreeNode(root, a[13]);
-	insertTreeNode(root, a[14]);
-	insertTreeNode(root, a[15]);
-	insertTreeNode(root, a[16]);
-	insertTreeNode(root, a[17]);
-	insertTreeNode(root, a[18]);
-	insertTreeNode(root, a[19]);
-	
+	for (int i=1; i<=n; i++)//muestra hasta 99 nodos
+	{
+		insertTreeNode(root, a[i]);
+		printf("%d",i);
+	}
+
 	PrintTree(root);
     updateBalanceFactorTree(root);
     root = balanceTree(root);
     PrintTree(root);
     deleteTree(root);
-    getchar();
+    getche();
     //return 0;
 }
 
@@ -554,34 +543,19 @@ void nuevoNodo()
 		{
 			printf("Nodo repetido...");
 			repetido=1;
-			getchar();
+			getche();
 			break;
 		}
 	}
 	n=n+1;
 	a[n]=nuevo;
 	
-	//manera que encontr� de como desplegarlo (arreglar si es que se puede)
 	treeNode *root = CreateTreeNode(NULL, a[0]);
-	insertTreeNode(root, a[1]);
-	insertTreeNode(root, a[2]);
-	insertTreeNode(root, a[3]);
-	insertTreeNode(root, a[4]);
-	insertTreeNode(root, a[5]);
-	insertTreeNode(root, a[6]);
-	insertTreeNode(root, a[7]);
-	insertTreeNode(root, a[8]);
-	insertTreeNode(root, a[9]);
-	insertTreeNode(root, a[10]);
-	insertTreeNode(root, a[11]);
-	insertTreeNode(root, a[12]);
-	insertTreeNode(root, a[13]);
-	insertTreeNode(root, a[14]);
-	insertTreeNode(root, a[15]);
-	insertTreeNode(root, a[16]);
-	insertTreeNode(root, a[17]);
-	insertTreeNode(root, a[18]);
-	insertTreeNode(root, a[19]);
+	for (int i=1; i<=n; i++)//muestra hasta 99 nodos
+	{
+		insertTreeNode(root, a[i]);
+		printf("%d",i);
+	}
 	if(repetido==0)
 	{
 		PrintTree(root);
@@ -589,92 +563,75 @@ void nuevoNodo()
 	    root = balanceTree(root);
 	    PrintTree(root);
 	    deleteTree(root);
-	    getchar();
+	    getche();
 	}
+}
+
+void borrar()
+{
+	system("cls");
+	float borrar;
+	//bool repetido=false;
+	
+	printf("Ingresa el nodo a borrar ");
+	scanf("%f",&borrar);
+	for(int i=0;i<=n;i++)
+	{
+		if(borrar==a[i])
+		{
+			a[i]='\0';
+			
+			
+			break;
+		}
+		else
+		{
+			printf("Nodo no encontrado...");
+			getche();
+			break;
+		}
+	}
+
 }
 
 void preorder()
 {
-	//manera que encontr� de como desplegarlo (arreglar si es que se puede)
 	treeNode *root = CreateTreeNode(NULL, a[0]);
-	insertTreeNode(root, a[1]);
-	insertTreeNode(root, a[2]);
-	insertTreeNode(root, a[3]);
-	insertTreeNode(root, a[4]);
-	insertTreeNode(root, a[5]);
-	insertTreeNode(root, a[6]);
-	insertTreeNode(root, a[7]);
-	insertTreeNode(root, a[8]);
-	insertTreeNode(root, a[9]);
-	insertTreeNode(root, a[10]);
-	insertTreeNode(root, a[11]);
-	insertTreeNode(root, a[12]);
-	insertTreeNode(root, a[13]);
-	insertTreeNode(root, a[14]);
-	insertTreeNode(root, a[15]);
-	insertTreeNode(root, a[16]);
-	insertTreeNode(root, a[17]);
-	insertTreeNode(root, a[18]);
-	insertTreeNode(root, a[19]);
+	for (int i=1; i<=n; i++)//muestra hasta 99 nodos
+	{
+		insertTreeNode(root, a[i]);
+	
+	}
 	
 	printPreorder(root);
-	getchar();
+	getche();
 }
 
 void postorder()
 {
 	//manera que encontr� de como desplegarlo (arreglar si es que se puede)
 	treeNode *root = CreateTreeNode(NULL, a[0]);
-	insertTreeNode(root, a[1]);
-	insertTreeNode(root, a[2]);
-	insertTreeNode(root, a[3]);
-	insertTreeNode(root, a[4]);
-	insertTreeNode(root, a[5]);
-	insertTreeNode(root, a[6]);
-	insertTreeNode(root, a[7]);
-	insertTreeNode(root, a[8]);
-	insertTreeNode(root, a[9]);
-	insertTreeNode(root, a[10]);
-	insertTreeNode(root, a[11]);
-	insertTreeNode(root, a[12]);
-	insertTreeNode(root, a[13]);
-	insertTreeNode(root, a[14]);
-	insertTreeNode(root, a[15]);
-	insertTreeNode(root, a[16]);
-	insertTreeNode(root, a[17]);
-	insertTreeNode(root, a[18]);
-	insertTreeNode(root, a[19]);
+	for (int i=1; i<=n; i++)//muestra hasta 99 nodos
+	{
+		insertTreeNode(root, a[i]);
+	
+	}
 	
 	printPostorder(root);
-	getchar();
+	getche();
 }
 
 void inorder()
 {
-	//manera que encontr� de como desplegarlo (arreglar si es que se puede)
 	treeNode *root = CreateTreeNode(NULL, a[0]);
-	insertTreeNode(root, a[1]);
-	insertTreeNode(root, a[2]);
-	insertTreeNode(root, a[3]);
-	insertTreeNode(root, a[4]);
-	insertTreeNode(root, a[5]);
-	insertTreeNode(root, a[6]);
-	insertTreeNode(root, a[7]);
-	insertTreeNode(root, a[8]);
-	insertTreeNode(root, a[9]);
-	insertTreeNode(root, a[10]);
-	insertTreeNode(root, a[11]);
-	insertTreeNode(root, a[12]);
-	insertTreeNode(root, a[13]);
-	insertTreeNode(root, a[14]);
-	insertTreeNode(root, a[15]);
-	insertTreeNode(root, a[16]);
-	insertTreeNode(root, a[17]);
-	insertTreeNode(root, a[18]);
-	insertTreeNode(root, a[19]);
+	for (int i=1; i<=n; i++)//muestra hasta 99 nodos
+	{
+		insertTreeNode(root, a[i]);
+		
+	}
 	
 	printInorder(root);
-	getchar();
+	getche();
 }
 
 void menu()
@@ -695,14 +652,14 @@ void menu()
 		if (((op<0)||(op>10))&&(op!=(10)))
 		{
 			printf("\nError valor fuera de rango\n");
-			getchar();
+			getche();
 		}
 		else
 		{
 			if (op==1)	captura();
 			if (op==2) 	muestra();
 			if (op==3)	nuevoNodo();
-			//if (op==4) mayor(); Esta es la que falta
+			if (op==4) borrar(); //Esta es la que falta
 			if (op==5) preorder();	
 			if (op==6) postorder();	
 			if (op==7) inorder();	
@@ -714,18 +671,7 @@ void menu()
 int main(int argc, char const *argv[])
 {
     treeNode *root = CreateTreeNode(NULL, 1);
-    /*insertTreeNode(root, 2);
-    insertTreeNode(root, 3);
-	insertTreeNode(root, 4);
-    insertTreeNode(root, 5);
-    insertTreeNode(root, 6);
-    insertTreeNode(root, 7);
-    insertTreeNode(root, 8);
-    insertTreeNode(root, 9);
-    insertTreeNode(root, 10);
-    insertTreeNode(root, 11);
-    insertTreeNode(root, 12);
-    insertTreeNode(root, 13);*/
+   
     
     menu();
 /*
